@@ -2,7 +2,7 @@
 #  🎯 ViP-LLaVA: Making Large Multimodal Models Understand Arbitrary Visual Prompts
 
 
-[Mu Cai](https://pages.cs.wisc.edu/~mucai/),[Haotian Liu](https://hliu.cc),[Siva Karthik Mustikovela](https://sivakm.github.io/), [Gregory P. Meyer](https://gregmeyer.info),[Yuning Chai](https://scholar.google.com/citations?user=i7U4YogAAAAJ&hl=en),[Dennis Park](https://scholar.google.com/citations?user=_UJsz3AAAAAJ&hl=en),[Yong Jae Lee](https://pages.cs.wisc.edu/~yongjaelee/)
+[Mu Cai](https://pages.cs.wisc.edu/~mucai/), [Haotian Liu](https://hliu.cc), [Siva Karthik Mustikovela](https://sivakm.github.io/), [Gregory P. Meyer](https://gregmeyer.info), [Yuning Chai](https://scholar.google.com/citations?user=i7U4YogAAAAJ&hl=en), [Dennis Park](https://scholar.google.com/citations?user=_UJsz3AAAAAJ&hl=en), [Yong Jae Lee](https://pages.cs.wisc.edu/~yongjaelee/)
 
 
 [[Project Page](https://vip-llava.github.io/)] [[Demo](https://pages.cs.wisc.edu/~mucai/vip-llava.html)] [[Model Zoo](https://github.com/mu-cai/ViP-LLaVA/blob/main/docs/MODEL_ZOO.md)] [[Paper](https://arxiv.org/abs/2312.00784)] 
