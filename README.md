@@ -8,6 +8,11 @@
 [[Project Page](https://vip-llava.github.io/)] [[Demo](https://pages.cs.wisc.edu/~mucai/vip-llava.html)] [[Model Zoo](https://github.com/mu-cai/ViP-LLaVA/blob/main/docs/MODEL_ZOO.md)] [[Paper](https://arxiv.org/abs/2312.00784)] 
 
 
+<img src="images/vip-llava_arch.png" width="80%">
+
+
+
+
 ## Release
 
 - [12/03] 🔥 We released **ViP-LLaVA: Making Large Multimodal Models Understand Arbitrary Visual Prompts**. We propose to directly overlay the visual prompts upon the the orginal image during visual instruction tunning, so that large multimodal models could possibly understand arbitrary visual prompts in a user-friendly way.  Checkout the [paper](https://arxiv.org/abs/2312.00784) and [demo](https://pages.cs.wisc.edu/~mucai/vip-llava.html). We also built the first zero-shot region-level benchmark **ViP-Bench** for large multimodal models.
