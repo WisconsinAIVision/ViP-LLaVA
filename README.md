@@ -27,7 +27,7 @@
 
 ## Contents
 - [Install](#install)
-- [LLaVA Weights](#vip-llava-weights)
+- [ViP-LLaVA Weights](#vip-llava-weights)
 - [Demo](#Demo)
 - [Model Zoo](https://github.com/mu-cai/ViP-LLaVA/blob/main/docs/MODEL_ZOO.md)
 - [Dataset](https://github.com/mu-cai/ViP-LLaVA/blob/main/docs/Data.md)
