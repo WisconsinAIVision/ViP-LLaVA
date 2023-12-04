@@ -286,7 +286,7 @@ def http_bot(state, model_selector, temperature, top_p, max_new_tokens, request:
 
 title_markdown = ("""
 # 🎯 ViP-LLaVA: Making Large Multimodal Models Understand Arbitrary Visual Prompts
-[[Project Page](https://vip-llava.github.io/)] [[Code](https://github.com/mu-cai/ViP-LLaVA)] [[Model](https://github.com/mu-cai/ViP-LLaVA/blob/main/docs/MODEL_ZOO.md)] [[Paper](https://arxiv.org/abs/xxx)] 
+[[Project Page](https://vip-llava.github.io/)] [[Code](https://github.com/mu-cai/ViP-LLaVA)] [[Model](https://github.com/mu-cai/ViP-LLaVA/blob/main/docs/MODEL_ZOO.md)] [[Paper](https://arxiv.org/abs/2312.00784)] 
 """)
 
 tos_markdown = ("""

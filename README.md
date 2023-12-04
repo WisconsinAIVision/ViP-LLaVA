@@ -5,12 +5,12 @@
 [Mu Cai](https://pages.cs.wisc.edu/~mucai/),[Haotian Liu](https://hliu.cc),[Siva Karthik Mustikovela](https://sivakm.github.io/), [Gregory P. Meyer](https://gregmeyer.info),[Yuning Chai](https://scholar.google.com/citations?user=i7U4YogAAAAJ&hl=en),[Dennis Park](https://scholar.google.com/citations?user=_UJsz3AAAAAJ&hl=en),[Yong Jae Lee](https://pages.cs.wisc.edu/~yongjaelee/)
 
 
-[[Project Page](https://vip-llava.github.io/)] [[Demo](https://pages.cs.wisc.edu/~mucai/vip-llava.html)] [[Model Zoo](https://github.com/mu-cai/ViP-LLaVA/blob/main/docs/MODEL_ZOO.md)] [[Paper](https://arxiv.org/abs/xxx)] 
+[[Project Page](https://vip-llava.github.io/)] [[Demo](https://pages.cs.wisc.edu/~mucai/vip-llava.html)] [[Model Zoo](https://github.com/mu-cai/ViP-LLaVA/blob/main/docs/MODEL_ZOO.md)] [[Paper](https://arxiv.org/abs/2312.00784)] 
 
 
 ## Release
 
-- [12/03] 🔥 We released **ViP-LLaVA: Making Large Multimodal Models Understand Arbitrary Visual Prompts**. We propose to directly overlay the visual prompts upon the the orginal image during visual instruction tunning, so that large multimodal models could possibly understand arbitrary visual prompts in a user-friendly way.  Checkout the [paper](https://arxiv.org/abs/xxx) and [demo](https://pages.cs.wisc.edu/~mucai/vip-llava.html). We also built the first zero-shot region-level benchmark **ViP-Bench** for large multimodal models.
+- [12/03] 🔥 We released **ViP-LLaVA: Making Large Multimodal Models Understand Arbitrary Visual Prompts**. We propose to directly overlay the visual prompts upon the the orginal image during visual instruction tunning, so that large multimodal models could possibly understand arbitrary visual prompts in a user-friendly way.  Checkout the [paper](https://arxiv.org/abs/2312.00784) and [demo](https://pages.cs.wisc.edu/~mucai/vip-llava.html). We also built the first zero-shot region-level benchmark **ViP-Bench** for large multimodal models.
 
 
 
@@ -272,7 +272,7 @@ If you find LLaVA useful for your research and applications, please cite using t
 @inproceedings{cai2023vipllava,
 author      = {Cai, Mu and Liu, Haotian and Mustikovela,  Siva Karthik and Meyer, Gregory P. and Chai, Yuning and Park, Dennis and Lee, Yong Jae},
 title       = {Making Large Multimodal Models Understand Arbitrary Visual Prompts},
-booktitle   = {arXiv:xxx:xxx},
+booktitle   = {arXiv:2312.00784},
 year        = {2023}
 }
 ```
