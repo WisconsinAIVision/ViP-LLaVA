@@ -77,36 +77,25 @@ from llava.model.builder import load_pretrained_model
 from llava.mm_utils import get_model_name_from_path
 from llava.eval.run_llava import eval_model
 
-model_path = "mucai/vip-llava-7b"
+model_path = "/nobackup/mucai_backup/llm/vip-llava-7b"
+prompt = "What is shown within the pointed region?"
+image_file = "https://pages.cs.wisc.edu/~mucai/man-cross-street.jpg"
 
-tokenizer, model, image_processor, context_len = load_pretrained_model(
-    model_path=model_path,
-    model_base=None,
-    model_name=get_model_name_from_path(model_path)
-)
+args = type('Args', (), {
+    "model_path": model_path,
+    "model_name": get_model_name_from_path(model_path),
+    "query": prompt,
+    "image_file": image_file,
+    "conv_mode": None, "model_base": None, "temperature": 0.2, "top_p": None, "num_beams": 1, "max_new_tokens": 512, "sep": ",",
+})()
+
+eval_model(args)
 ```
 
 Check out the details wth the `load_pretrained_model` function in `llava/model/builder.py`.
 
 You can also use the `eval_model` function in `llava/eval/run_llava.py` to get the output easily. By doing so, you can use this code on Colab directly after downloading this repository.
 
-``` python
-model_path = "mucai/vip-llava-7b"
-prompt = "What is shown within the pointed region?"
-image_file = "https://pages.cs.wisc.edu/~mucai/man-cross-street.jpg"
-
-args = type('Args', (), {
-    "model_path": model_path,
-    "model_base": None,
-    "model_name": get_model_name_from_path(model_path),
-    "query": prompt,
-    "conv_mode": None,
-    "image_file": image_file,
-    "sep": ",",
-})()
-
-eval_model(args)
-```
 </details>
 
 ## ViP-LLaVA Weights
