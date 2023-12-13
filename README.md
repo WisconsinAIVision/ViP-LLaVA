@@ -77,7 +77,7 @@ from llava.model.builder import load_pretrained_model
 from llava.mm_utils import get_model_name_from_path
 from llava.eval.run_llava import eval_model
 
-model_path = "/nobackup/mucai_backup/llm/vip-llava-7b"
+model_path = "mucai/vip-llava-7b"
 prompt = "What is shown within the pointed region?"
 image_file = "https://pages.cs.wisc.edu/~mucai/man-cross-street.jpg"
 
