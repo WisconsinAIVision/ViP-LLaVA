@@ -30,6 +30,7 @@ build:
     - "wandb==0.15.12"
     - "wavedrom==2.0.3.post3"
     - "Pygments==2.16.1"
+    -  "openai==0.28"
   run:
     - curl -o /usr/local/bin/pget -L "https://github.com/replicate/pget/releases/download/v0.0.3/pget" && chmod +x /usr/local/bin/pget
 

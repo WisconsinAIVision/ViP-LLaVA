@@ -33,3 +33,8 @@ ckpts*
 
 # Demo
 serve_images/
+
+playground/data/
+images/gradio*
+tmp*
+

@@ -256,7 +256,14 @@ Training instrcution is coming soon...
 
 ## Evaluation
 
-ViP-LLaVA is both evaluate on the 4 academic region-level benchmark and the newly proposed **ViP-nBench**. Evaluation code will come soon. 
+ViP-LLaVA is both evaluate on the 4 academic region-level benchmark and the newly proposed **ViP-Bench**. Evaluation code will come soon. 
+
+
+
+
+
+See [Evaluation.md](https://github.com/mu-cai/ViP-LLaVA/blob/main/docs/Evaluation.md).
+
 
 
 ## Citation
