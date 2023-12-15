@@ -13,7 +13,7 @@ Optionally, Change the model name from `vip-llava-7b` to other LLaVA or ViP-LLaV
 3. Submit the results to the [evaluation server](https://huggingface.co/spaces/mucai/ViP-Bench_Evaluator): `./playground/data/eval/ViP-Bench/results/vip-llava-7b-human.json`.
 
 
-Optionally, see [here](https://github.com/mu-cai/ViP-LLaVA/blob/main/scripts/eval/vip-bench_evaluator.py) as an evualation script using your own openai key. 
+Optionally, see [here](https://github.com/mu-cai/ViP-LLaVA/blob/main/scripts/eval/vip-bench_evaluator.py), which is an evaluation script using your own openai key. 
 
 ## Source annotation
 
@@ -23,4 +23,6 @@ In `source_image`, we provide the source plain images along with the bounding bo
 
 
 
+## Academic Benchmarks
 
+Coming soon. 

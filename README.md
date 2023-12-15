@@ -5,8 +5,9 @@
 [Mu Cai](https://pages.cs.wisc.edu/~mucai/), [Haotian Liu](https://hliu.cc), [Siva Karthik Mustikovela](https://sivakm.github.io/), [Gregory P. Meyer](https://gregmeyer.info), [Yuning Chai](https://scholar.google.com/citations?user=i7U4YogAAAAJ&hl=en), [Dennis Park](https://scholar.google.com/citations?user=_UJsz3AAAAAJ&hl=en), [Yong Jae Lee](https://pages.cs.wisc.edu/~yongjaelee/)
 
 
-[[Project Page](https://vip-llava.github.io/)] [[Demo](https://pages.cs.wisc.edu/~mucai/vip-llava.html)] [[Model Zoo](https://github.com/mu-cai/ViP-LLaVA/blob/main/docs/MODEL_ZOO.md)] [[Paper](https://arxiv.org/abs/2312.00784)] 
+**Approach:** [[Project Page](https://vip-llava.github.io/)] [[Demo](https://pages.cs.wisc.edu/~mucai/vip-llava.html)] [[Model Zoo](https://github.com/mu-cai/ViP-LLaVA/blob/main/docs/MODEL_ZOO.md)] [[Paper](https://arxiv.org/abs/2312.00784)] 
 
+**ViP-Bench:** [[Download Dataset]](https://huggingface.co/datasets/mucai/ViP-Bench) [[LeaderBoard]](https://paperswithcode.com/sota/visual-question-answering-on-vip-bench) [[Evaluation Server]](https://huggingface.co/spaces/mucai/ViP-Bench_Evaluator)
 
 <img src="images/vip-llava_arch.png" width="80%">
 
@@ -256,7 +257,7 @@ Training instrcution is coming soon...
 
 ## Evaluation
 
-ViP-LLaVA is both evaluate on the 4 academic region-level benchmark and the newly proposed **ViP-Bench**. Evaluation code will come soon. 
+ViP-LLaVA is both evaluate on the 4 academic region-level benchmark and the newly proposed **ViP-Bench**. 
 
 
 
