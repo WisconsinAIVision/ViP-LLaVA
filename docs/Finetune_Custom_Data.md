@@ -2,7 +2,7 @@
 
 ## Dataset Format
 
-Convert your data to a JSON file of a List of all samples. Sample metadata should contain `id` (a unique identifier), `image` (the path to the image), and `conversations` (the conversation data between human and AI). Note that the image can be annotaed with arbitrary visual prompts. 
+Convert your data to a JSON file of a List of all samples. Sample metadata should contain `id` (a unique identifier), `image` (the path to the image), `conversations` (the conversation data between human and AI), `bboxes` (a list of bounding boxes), and optionally `segmentations` (a list of segmentation masks). Note that the image can be annotaed with arbitrary visual prompts. Also try using different visual prompts. 
 
 A sample JSON for finetuning ViP-LLaVA for generating tag-style captions for Stable Diffusion:
 
@@ -11,10 +11,11 @@ A sample JSON for finetuning ViP-LLaVA for generating tag-style captions for Sta
   {
     "id": "997bb945-628d-4724-b370-b84de974a19f",
     "image": "part-000001/997bb945-628d-4724-b370-b84de974a19f.jpg",
+    "bbox": [ [25, 30, 120, 150], [35, 23, 134, 213] ]
     "conversations": [
       {
         "from": "human",
-        "value": "<image>\nWrite a prompt for Stable Diffusion to generate this image."
+        "value": "<image>\nWrite a prompt for Stable Diffusion to generate this image, foucsing on <bbox0> and <bbox1>."
       },
       {
         "from": "gpt",

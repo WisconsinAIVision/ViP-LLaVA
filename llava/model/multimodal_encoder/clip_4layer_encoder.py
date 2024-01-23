@@ -60,17 +60,6 @@ class CLIPVisionTowerMultilayer(nn.Module):
     def feature_select(self, image_forward_outs):
         image_features = [image_forward_outs['hidden_states'][index][:, 1:] for index in [-2, -5, -8, -11, 6]]
         image_features = torch.cat(image_features, dim=-1)
-        # image_features should be a list of [N, H*W, C] features, how to concate it into [N, H*W, 4*C]
-        
-        
-        
-        # image_features = image_forward_outs.hidden_states[self.select_layer]
-        # if self.select_feature == 'patch':
-        #     image_features = image_features[:, 1:]
-        # elif self.select_feature == 'cls_patch':
-        #     image_features = image_features
-        # else:
-        #     raise ValueError(f'Unexpected select feature: {self.select_feature}')
         return image_features
 
     @torch.no_grad()

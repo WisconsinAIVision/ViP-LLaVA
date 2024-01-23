@@ -1,4 +1,4 @@
-# Customize Components in LLaVA
+# Customize Components in ViP-LLaVA
 
 This is an initial guide on how to replace the LLMs, visual encoders, etc. with your choice of components.
 

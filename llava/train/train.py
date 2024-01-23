@@ -35,6 +35,8 @@ from llava.model import *
 from llava.mm_utils import tokenizer_image_token
 
 from PIL import Image
+import random
+from llava.visual_prompt_organizer import vip_processor, visual_prompt_config
 
 
 local_rank = None
@@ -667,6 +669,13 @@ class LazySupervisedDataset(Dataset):
             image_folder = self.data_args.image_folder
             processor = self.data_args.image_processor
             image = Image.open(os.path.join(image_folder, image_file)).convert('RGB')
+            if type(sources[0]['id']) == str and sources[0]['id'].split('-')[0] in visual_prompt_config:
+                try:
+                    image, conversation = vip_processor(sources[0], image, image_size_anchor = processor.crop_size['height'], data_args = self.data_args)
+                except:
+                    print('Fail in ViP image processing...')
+                    return self.__getitem__(random.randint(0, len(self.list_data_dict)-1))
+                sources[0]["conversations"] = conversation
             if self.data_args.image_aspect_ratio == 'pad':
                 def expand2square(pil_img, background_color):
                     width, height = pil_img.size
