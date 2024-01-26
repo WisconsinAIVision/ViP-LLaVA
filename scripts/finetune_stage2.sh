@@ -1,8 +1,8 @@
 #!/bin/bash
-MODEL_VERSION="vicuna-7b-v1-5"
 PROMPT_VERSION=llava_v1
 DATA_ROOT=./playground/data
 model_size=7b
+MODEL_VERSION=vicuna-$model_size-v1-5
 
 
 deepspeed --master_port 12347 llava/train/train_mem.py \

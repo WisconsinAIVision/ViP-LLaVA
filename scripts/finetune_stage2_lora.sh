@@ -1,8 +1,8 @@
 #!/bin/bash
-MODEL_VERSION="vicuna-7b-v1-5"
 PROMPT_VERSION=llava_v1
 DATA_ROOT=./playground/data
 model_size=7b
+MODEL_VERSION=vicuna-$model_size-v1-5
 
 deepspeed llava/train/train_mem.py \
     --lora_enable True --lora_r 128 --lora_alpha 256 --mm_projector_lr 2e-5 \

@@ -1,5 +1,4 @@
 #!/bin/bash
-MODEL_VERSION="vicuna-7b-v1-5"
 PROMPT_VERSION=llava_v1
 DATA_ROOT=./playground/data
 model_size=7b
