@@ -1,4 +1,4 @@
-# Run ViP=LLaVA on macOS
+# Run ViP-LLaVA on macOS
 
 *NOTE: ViP-LLaVA on macOS is not fully supported. Currently we only support 16-bit inference. More functionalities on macOS is to be added soon, stay tuned.*
 
