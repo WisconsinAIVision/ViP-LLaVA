@@ -37,4 +37,6 @@ serve_images/
 playground/data/
 images/gradio*
 tmp*
-
+dataset
+*chtc*
+*debug*

@@ -231,7 +231,7 @@ Please download the 558K subset of the LAION-CC-SBU dataset with BLIP captions w
 
 Pretrain takes around 5.5 hours for ViP-LLaVA-13B on 8x A100 (80G). It takes around 3.5 hours for  ViP-LLaVA-7B.
 
-Training script with DeepSpeed ZeRO-2: [`pretrain.sh`](https://github.com/mu-cai/ViP-LLaVA/blob/main/scripts/v1_5/pretrain.sh).
+Training script with DeepSpeed ZeRO-2: [`pretrain.sh`](https://github.com/mu-cai/ViP-LLaVA/blob/main/scripts/pretrain.sh).
 
 - `--mm_projector_type mlp2x_gelu`: the two-layer MLP vision-language connector.
 - `--vision_tower clip_4layers_336`: CLIP ViT-L/14 336px with multilayer feature fusion.
@@ -246,20 +246,57 @@ Tips:
 
 ### Visual Instruction Tuning
 
-Training instrcution is coming soon...
+1. Prepare data
+
+Please download the annotations of our instruction tuning data in [stage 2](https://huggingface.co/datasets/mucai/ViP-LLaVA-Instruct/blob/main/vip-llava_stage2_mix.json) and [stage 3](https://huggingface.co/datasets/mucai/ViP-LLaVA-Instruct/blob/main/vip-llava_stage3_mix.json). and download the images from constituting datasets:
+
+- COCO: [train2017](http://images.cocodataset.org/zips/train2017.zip)
+- GQA: [images](https://downloads.cs.stanford.edu/nlp/data/gqa/images.zip)
+- OCR-VQA: [download script](https://drive.google.com/drive/folders/1_GYPY5UkUy7HIcR0zq3ZCFgeZN7BAfm_?usp=sharing), **we save all files as `.jpg`**
+- TextVQA: [train_val_images](https://dl.fbaipublicfiles.com/textvqa/images/train_val_images.zip)
+- VisualGenome: [part1](https://cs.stanford.edu/people/rak248/VG_100K_2/images.zip), [part2](https://cs.stanford.edu/people/rak248/VG_100K_2/images2.zip)
+- Flickr30k: [download here](https://forms.illinois.edu/sec/229675)
+- VCR: [download here](https://visualcommonsense.com/download/)
+- Visual7W: [download here](http://vision.stanford.edu/yukezhu/visual7w_images.zip)
+
+After downloading all of them, organize the data as follows in `./playground/data`,
+
+```
+├── flickr30k-images
+├── v7w
+├── vcr1images
+├── coco
+│   └── train2017
+├── gqa
+│   └── images
+├── ocr_vqa
+│   └── images
+├── textvqa
+│   └── train_images
+└── vg
+    ├── VG_100K
+    └── VG_100K_2
+```
 
 
+2. Start training!
 
-### Finetuning on GPT-4V Instruction Data.
+You may download our pretrained projectors in [Model Zoo](https://github.com/mu-cai/ViP-LLaVA/blob/main/docs/MODEL_ZOO.md). It is not recommended to use legacy projectors, as they may be trained with a different version of the codebase, and if any option is off, the model will not function/train as we expected.
 
-Training instrcution is coming soon...
+Visual instruction tuning takes around 40 hours for LLaVA-v1.5-13B on 8x A100 (80G) It takes around 20 hours for LLaVA-v1.5-7B on 8x A100 (40G).
 
+Training script with DeepSpeed ZeRO-2: [`finetune_stage2.sh`](https://github.com/mu-cai/ViP-LLaVA/blob/main/scripts/finetune_stage2.sh). If you further want to use GPT-4V data to enhance the chatting capbility, see the training script for stage 3 with DeepSpeed ZeRO-2: [`finetune_stage3.sh`](https://github.com/mu-cai/ViP-LLaVA/blob/main/scripts/finetune_stage3.sh)
+
+If you are do not have enough GPU memory:
+
+- Use LoRA: [`finetune_lora.sh`](https://github.com/mu-cai/ViP-LLaVA/blob/main/scripts/finetune_lora.sh). We are able to fit 13B training in 8-A100-40G/8-A6000, and 7B training in 8-RTX3090. Make sure `per_device_train_batch_size*gradient_accumulation_steps` is the same as the provided script for best reproducibility.
+- Replace `zero3.json` with `zero3_offload.json` which offloads some parameters to CPU RAM. This slows down the training speed.
+
+If you are interested in finetuning LLaVA model to your own task/data, please check out [`Finetune_Custom_Data.md`](https://github.com/mu-cai/ViP-LLaVA/blob/main/docs/Finetune_Custom_Data.md)。
 
 ## Evaluation
 
 ViP-LLaVA is both evaluate on the 4 academic region-level benchmark and the newly proposed **ViP-Bench**. 
-
-
 
 
 

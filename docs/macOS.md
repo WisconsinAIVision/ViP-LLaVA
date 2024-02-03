@@ -1,10 +1,10 @@
-# Run LLaVA on macOS
+# Run ViP-LLaVA on macOS
 
-*NOTE: LLaVA on macOS is not fully supported. Currently we only support 16-bit inference. More functionalities on macOS is to be added soon, stay tuned.*
+*NOTE: ViP-LLaVA on macOS is not fully supported. Currently we only support 16-bit inference. More functionalities on macOS is to be added soon, stay tuned.*
 
 ## Installation
 
-1. Clone this repository and navigate to LLaVA folder
+1. Clone this repository and navigate to ViP-LLaVA folder
 ```bash
 git clone https://github.com/mu-cai/ViP-LLaVA.git
 cd ViP-LLaVA
