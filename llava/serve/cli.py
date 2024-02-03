@@ -33,7 +33,7 @@ def main(args):
 
     if 'llama-2' in model_name.lower():
         conv_mode = "llava_llama_2"
-    elif "v1" in model_name.lower():
+    elif "v1" in model_name.lower() or 'vip-llava' in model_name.lower():
         conv_mode = "llava_v1"
     elif "mpt" in model_name.lower():
         conv_mode = "mpt"
