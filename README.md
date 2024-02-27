@@ -1,5 +1,5 @@
 <!-- Copyright 2023 Cruise LLC -->
-#  🎯 ViP-LLaVA: Making Large Multimodal Models Understand Arbitrary Visual Prompts
+#  🎯 [CVPR2024] ViP-LLaVA: Making Large Multimodal Models Understand Arbitrary Visual Prompts
 
 
 [Mu Cai](https://pages.cs.wisc.edu/~mucai/), [Haotian Liu](https://hliu.cc), [Siva Karthik Mustikovela](https://sivakm.github.io/), [Gregory P. Meyer](https://gregmeyer.info), [Yuning Chai](https://scholar.google.com/citations?user=i7U4YogAAAAJ&hl=en), [Dennis Park](https://scholar.google.com/citations?user=_UJsz3AAAAAJ&hl=en), [Yong Jae Lee](https://pages.cs.wisc.edu/~yongjaelee/)
@@ -16,6 +16,7 @@
 
 ## Release
 
+- [02/26] 🔥 ViP-LLaVA is accepted to CVPR 2024!
 - [12/13] 🔥 Our works now appears on the official Huggingface [transformers doc](https://huggingface.co/docs/transformers/main/en/model_doc/vipllava)!
 - [12/03] 🔥 We released **ViP-LLaVA: Making Large Multimodal Models Understand Arbitrary Visual Prompts**. We propose to directly overlay the visual prompts upon the the original image during visual instruction tunning, so that large multimodal models could possibly understand arbitrary visual prompts in a user-friendly way.  Checkout the [paper](https://arxiv.org/abs/2312.00784) and [demo](https://pages.cs.wisc.edu/~mucai/vip-llava.html). We also built the first zero-shot region-level benchmark **ViP-Bench** for large multimodal models.
 
