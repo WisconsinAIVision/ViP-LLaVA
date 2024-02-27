@@ -311,10 +311,10 @@ If you find LLaVA useful for your research and applications, please cite using t
 ```bibtex
 
 @inproceedings{cai2023vipllava,
-author      = {Cai, Mu and Liu, Haotian and Mustikovela,  Siva Karthik and Meyer, Gregory P. and Chai, Yuning and Park, Dennis and Lee, Yong Jae},
-title       = {Making Large Multimodal Models Understand Arbitrary Visual Prompts},
-booktitle   = {arXiv:2312.00784},
-year        = {2023}
+  author      = {Cai, Mu and Liu, Haotian and Mustikovela,  Siva Karthik and Meyer, Gregory P. and Chai, Yuning and Park, Dennis and Lee, Yong Jae},
+  title       = {Making Large Multimodal Models Understand Arbitrary Visual Prompts},
+  booktitle   = {IEEE Conference on Computer Vision and Pattern Recognition},
+  year        = {2024}
 }
 ```
 
