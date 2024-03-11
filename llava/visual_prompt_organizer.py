@@ -312,7 +312,7 @@ def get_all_qa(all_corpus, shape_color_info, class_names, answer_type = ''):
     shape_color_info_visual_prompt_image = []
     for corpus in all_corpus:
         text = ''
-        for instance_index, instance in enumerate( corpus):
+        for instance_index, instance in enumerate(corpus):
             if type(instance) == list:
                 for obejct_index in range(len(instance)):
                     shape_color = shape_color_info[instance[obejct_index]]
@@ -378,6 +378,79 @@ def get_question(question, all_choices, use_multichoice_question, why_question =
 
 
 
+def create_question_direct_qa(line, shape_choices, color_list):
+    question =[ line['question']]
+    answer = line['answer_choices']
+    all_corpus = question + answer
+    all_instance_index =  get_all_instances(all_corpus)
+    shape_color_info = get_color_shape(all_instance_index, shape_choices, color_list)
+    class_names = line['class_names']
+    shape_color_info_visual_prompt_image_all = []
+    question, shape_color_info_visual_prompt_image = get_all_qa(question, shape_color_info, class_names, answer_type = 'direct')
+    question = question[0]
+    shape_color_info_visual_prompt_image_all.extend(shape_color_info_visual_prompt_image)
+    answer, shape_color_info_visual_prompt_image  = get_all_qa(answer, shape_color_info, class_names, answer_type = 'direct')
+    shape_color_info_visual_prompt_image_all.extend(shape_color_info_visual_prompt_image)
+    
+    question_prompt ='<image>\n' + build_prompt(question, answer)
+    question_answer_prompt = answer_map[line['answer_label']]  
+    
+    
+    conversations=  [
+            {
+                "from": "human",
+                "value":question_prompt
+            },
+            {
+                "from": "gpt",
+                "value": question_answer_prompt
+            }, 
+            ]   
+    shape_color_info =  [shape_color_info[instance_index] for instance_index in all_instance_index]
+    return shape_color_info,all_instance_index, conversations           
+              
+def create_question_direct_qar(line, shape_choices, color_list):
+    question =[ line['question']]
+    org_answer = [ line['answer_choices'] [line['answer_label']] ]
+    why_answer = line['rationale_choices']
+    all_corpus = question + org_answer + why_answer
+    all_instance_index =  get_all_instances(all_corpus)
+    
+    shape_color_info = get_color_shape(all_instance_index, shape_choices, color_list)
+    class_names = line['class_names']
+    shape_color_info_visual_prompt_image_all = []
+    question, shape_color_info_visual_prompt_image = get_all_qa(question, shape_color_info, class_names, answer_type = 'direct')
+    question = question[0]
+    shape_color_info_visual_prompt_image_all.extend(shape_color_info_visual_prompt_image)
+    
+    org_answer, shape_color_info_visual_prompt_image = get_all_qa(org_answer, shape_color_info, class_names, answer_type = 'direct')
+    org_answer = org_answer[0]
+    shape_color_info_visual_prompt_image_all.extend(shape_color_info_visual_prompt_image)
+    
+    why_answer, shape_color_info_visual_prompt_image  = get_all_qa(why_answer, shape_color_info, class_names, answer_type = 'direct')
+    shape_color_info_visual_prompt_image_all.extend(shape_color_info_visual_prompt_image)
+    
+    
+    question_prompt = build_prompt('', why_answer)
+    
+    why_answer_prompt  =  answer_map[line['rationale_label']]
+    conversations=  [             
+              {
+                  "from": "human",
+                  "value":  '<image>\n' + f'I give you a question and its answer, I need you to provide a rationale explaining why the answer is right. "{question}" The answer is "{org_answer}".What is the rationale for this decision?{question_prompt}' 
+              },
+              {
+                  "from": "gpt",
+                  "value": why_answer_prompt
+              }
+          ]
+    shape_color_info =  [shape_color_info[instance_index] for instance_index in all_instance_index]
+    return shape_color_info,all_instance_index, conversations
+
+
+
+    
+
 def create_question_prompt(line, shape_choices, color_list):
     use_multichoice_question = random.random()<0.5
     use_multichoice_why = random.random()<0.5
@@ -397,12 +470,12 @@ def create_question_prompt(line, shape_choices, color_list):
     shape_color_info = get_color_shape(all_instance_index, shape_choices, color_list)
     class_names = line['class_names']
     shape_color_info_visual_prompt_image_all = []
-    question, shape_color_info_visual_prompt_image = get_all_qa(question, shape_color_info, class_names, all_instance_index)
+    question, shape_color_info_visual_prompt_image = get_all_qa(question, shape_color_info, class_names)
     question = question[0]
     shape_color_info_visual_prompt_image_all.extend(shape_color_info_visual_prompt_image)
-    answer, shape_color_info_visual_prompt_image  = get_all_qa(answer, shape_color_info, class_names, all_instance_index)
+    answer, shape_color_info_visual_prompt_image  = get_all_qa(answer, shape_color_info, class_names)
     shape_color_info_visual_prompt_image_all.extend(shape_color_info_visual_prompt_image)
-    why_answer, shape_color_info_visual_prompt_image  = get_all_qa(why_answer, shape_color_info, class_names, all_instance_index)
+    why_answer, shape_color_info_visual_prompt_image  = get_all_qa(why_answer, shape_color_info, class_names)
     shape_color_info_visual_prompt_image_all.extend(shape_color_info_visual_prompt_image)
         
         
@@ -561,11 +634,19 @@ visual_prompt_config = dict(
     v7w = [ ["rectangle"], 'constant'],
     pointQA_twice = [ ["rectangle"], 'constant'],     
 ) 
+
+visual_prompt_config_test = dict(
+       vcr_qa = [ ["point"], 'constant'],
+       vcr_qar = [ ["point"], 'constant'],
+       
+)
         
 def vip_processor(source, image, image_size_anchor, data_args):
     dataset_type, sub_type = source['id'].split('-')[0],  source['id'].split('-')[1]
-    visual_prompt_shape_choices, visual_prompt_style  = visual_prompt_config[dataset_type]
-    
+    if getattr(data_args, "visual_prompt_style", None) != None:
+        visual_prompt_shape_choices, visual_prompt_style  = visual_prompt_config_test[data_args.visual_prompt_style]
+    else:
+        visual_prompt_shape_choices, visual_prompt_style  = visual_prompt_config[dataset_type]
     
     if dataset_type in {'vg_rel', 'v7w', 'pointQA_twice'}:
         source['segmentations'] = [None] * len(source['bboxes'])
@@ -574,7 +655,12 @@ def vip_processor(source, image, image_size_anchor, data_args):
     if dataset_type in {'vcr'}:
         source['meta_dir'] = source['meta_dir'].replace('./dataset', data_args.image_folder)
         meta_data = json.load(open(source['meta_dir']))
-        shape_color_info, all_instance_index, conversation  = create_question_prompt(source, visual_prompt_shape_choices, color_list = list(color_pool.items()) )
+        if getattr(data_args, "visual_prompt_style", None) == 'vcr_qa':
+            shape_color_info, all_instance_index, conversation  = create_question_direct_qa(source, visual_prompt_shape_choices, color_list = list(color_pool.items()) )
+        elif getattr(data_args, "visual_prompt_style", None) == 'vcr_qar':
+            shape_color_info, all_instance_index, conversation  = create_question_direct_qar(source, visual_prompt_shape_choices, color_list = list(color_pool.items()) )
+        else:
+            shape_color_info, all_instance_index, conversation  = create_question_prompt(source, visual_prompt_shape_choices, color_list = list(color_pool.items()) )
         source['bboxes'] = [meta_data['boxes'][instance_index][:-1] for instance_index in all_instance_index]
         source['segmentations'] = []
         for instance_index in all_instance_index:
@@ -615,10 +701,10 @@ def vip_processor(source, image, image_size_anchor, data_args):
                 used_colors.append(color_rgb)
             shape_color_info.append([color_name, color_rgb, predefined_shapes[instance_idx]])
         conversation = vip_conv_generator(source, shape_color_info, dataset_type, sub_type = sub_type)
-
+    alpha = data_args.alpha if 'alpha' in data_args else None
     for instance_idx, (bbox, segmentation) in enumerate(zip(source['bboxes'], source['segmentations'])):
         color_name, color_rgb, sampled_shape = shape_color_info[instance_idx] # random.choice(visual_prompt_shape_choices)
-        image = image_blending(image,  shape = sampled_shape, image_size_anchor = image_size_anchor, rgb_value=color_rgb, bbox_coord= bbox, segmentation=segmentation, visual_prompt_style = visual_prompt_style)
+        image = image_blending(image,  shape = sampled_shape, image_size_anchor = image_size_anchor, rgb_value=color_rgb, bbox_coord= bbox, segmentation=segmentation, visual_prompt_style = visual_prompt_style, alpha = alpha)
     
     # from matplotlib import pyplot as plt
     # image.save('tmp.png')

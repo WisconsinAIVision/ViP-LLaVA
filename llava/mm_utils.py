@@ -25,12 +25,44 @@ def expand2square(pil_img, background_color):
         return result
 
 
-def process_images(images, image_processor, model_cfg):
-    image_aspect_ratio = getattr(model_cfg, "image_aspect_ratio", None)
+def process_image(image, image_preprocess, image_processor):
+    if image_preprocess == 'pad':
+        image = expand2square(image, tuple(int(x*255) for x in image_processor.image_mean))
+    elif image_preprocess == 'square':
+        """Crops an image to a square shape from the center."""
+        width, height = image.size  # Get dimensions
+
+        # Determine the size for the square side by taking the minimum of the width and height
+        new_size = min(width, height)
+
+        # Calculate coordinates to crop the image to a square from the center
+        # Ensuring that the crop is actually square by using the same new_size for both dimensions
+        left = int((width - new_size)/2)
+        top = int((height - new_size)/2)
+        right = left + new_size
+        bottom = top + new_size
+
+        # Crop the center of the image
+        image = image.crop((left, top, right, bottom))
+
+        return image
+
+    return image
+
+
+
+def process_images(images, image_processor, model_cfg, image_aspect_ratio = None):
+    image_aspect_ratio = getattr(model_cfg, "image_aspect_ratio", None) if image_aspect_ratio is None else image_aspect_ratio
     new_images = []
     if image_aspect_ratio == 'pad':
         for image in images:
             image = expand2square(image, tuple(int(x*255) for x in image_processor.image_mean))
+            image = image_processor.preprocess(image, return_tensors='pt')['pixel_values'][0]
+            new_images.append(image)
+    elif image_aspect_ratio == 'resize':
+        size = image_processor.crop_size['height']
+        for image in images:
+            image = image.resize((size, size))
             image = image_processor.preprocess(image, return_tensors='pt')['pixel_values'][0]
             new_images.append(image)
     else:

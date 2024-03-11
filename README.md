@@ -195,6 +195,14 @@ python -m llava.serve.cli \
     --load-4bit
 ```
 
+Or use the bounding box as the 
+
+```Shell
+python -m llava.serve.cli_vip --model-path ./checkpoints/vip-llava-7b --image-file "https://pages.cs.wisc.edu/~mucai/example_styletransfer.png"  --bbox=100,200,200,300
+```
+
+
+
 <img src="images/demo_cli.gif" width="70%">
 
 

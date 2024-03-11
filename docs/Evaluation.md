@@ -23,6 +23,37 @@ In `source_image`, we provide the source plain images along with the bounding bo
 
 
 
-## Academic Benchmarks
+# Academic Benchmarks
 
-Coming soon. 
+Please download the evaluation `json` dataset here. 
+
+## Visusl7W
+
+```Shell
+CUDA_VISIBLE_DEVICES=0 bash scripts/eval/v7w.sh
+```
+
+
+## PointQA-LookTwice
+
+```Shell
+CUDA_VISIBLE_DEVICES=0 bash scripts/eval/pointQA.sh
+```
+
+
+## Visual Commonsense Reasoning
+
+For Q -> A:
+```Shell
+CUDA_VISIBLE_DEVICES=0 bash scripts/eval/vcr-qa.sh
+```
+
+For QA -> R:
+```Shell
+CUDA_VISIBLE_DEVICES=0 bash scripts/eval/vcr-qar.sh
+```
+
+
+
+
+
