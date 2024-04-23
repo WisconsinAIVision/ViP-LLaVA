@@ -701,7 +701,8 @@ def vip_processor(source, image, image_size_anchor, data_args):
                 used_colors.append(color_rgb)
             shape_color_info.append([color_name, color_rgb, predefined_shapes[instance_idx]])
         conversation = vip_conv_generator(source, shape_color_info, dataset_type, sub_type = sub_type)
-    alpha = data_args.alpha if 'alpha' in data_args else None
+    # alpha = data_args.alpha if 'alpha' in data_args else None
+    alpha = getattr(data_args, "alpha", None)
     for instance_idx, (bbox, segmentation) in enumerate(zip(source['bboxes'], source['segmentations'])):
         color_name, color_rgb, sampled_shape = shape_color_info[instance_idx] # random.choice(visual_prompt_shape_choices)
         image = image_blending(image,  shape = sampled_shape, image_size_anchor = image_size_anchor, rgb_value=color_rgb, bbox_coord= bbox, segmentation=segmentation, visual_prompt_style = visual_prompt_style, alpha = alpha)

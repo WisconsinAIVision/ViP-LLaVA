@@ -319,7 +319,6 @@ def image_blending(image, shape = 'rectangle', bbox_coord = None, segmentation =
             draw_rounded_triangle(visual_prompt_img_canvas, bbox_coord, all_polygons_union, color_alpha, line_width)
       elif shape == 'point':
             radius =   max( int(8 * max_image_size/image_size_anchor), 1) if visual_prompt_style == 'constant' else  max(random.randint(int(5 * max_image_size/image_size_anchor),  int(20 *max_image_size/image_size_anchor)), 1)
-            radius =  max( int(width *max_image_size/image_size_anchor), 1) if width != None else line_width
             aspect_ratio =1 if random.random()<0.5 or  visual_prompt_style == 'constant' else random.uniform(0.5, 2.0)
             draw_point(visual_prompt_img_canvas, bbox_coord, mask_polygon, color_alpha, radius, aspect_ratio)
       elif shape == 'scribble':
