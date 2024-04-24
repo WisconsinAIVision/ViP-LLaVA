@@ -16,6 +16,13 @@ The model weights below are *merged* weights. You do not need to apply delta. Th
 Base model: Vicuna v1.5.
 
 
+## ViP-LLaVA Stage 2 Checkpoints
+
+[mucai/vip-llava-7b-base](https://huggingface.co/mucai/vip-llava-7b-base)
+
+[mucai/vip-llava-13b-base](https://huggingface.co/mucai/vip-llava-13b-base)
+
+
 ## Projector weights
 
 These are projector weights we have pretrained. You can use these projector weights for visual instruction tuning. They are just pretrained on image-text pairs and are NOT instruction-tuned, which means they do NOT follow instructions as well as our official models and can output repetitive, lengthy, and garbled outputs.
@@ -30,11 +37,14 @@ When using these projector weights to instruction-tune your LMM, please make sur
 --mm_use_im_patch_token False
 ```
 
-Coming soon... 
+[Projector for Vicuna-1.5 7B](https://huggingface.co/mucai/vip-llava-7b-pretrain)
+
+[Projector for Vicuna-1.5 13B](https://huggingface.co/mucai/vip-llava-13b-pretrain)
+
 
 ## VCR checkpoint
 
-Coming soon...
+[Checkpoint](https://huggingface.co/mucai/vip-llava-7b-base-vcr-ft)
 
 
 ## RefCOCOg Region Captioning checkpoint
