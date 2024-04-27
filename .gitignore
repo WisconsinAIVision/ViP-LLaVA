@@ -40,3 +40,4 @@ tmp*
 dataset
 *chtc*
 *debug*
+llava/model/language_model/mpt_old
