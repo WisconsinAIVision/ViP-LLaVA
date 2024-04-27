@@ -56,6 +56,10 @@ def eval_model(args):
     disable_torch_init()
     model_path = os.path.expanduser(args.model_path)
     model_name = get_model_name_from_path(model_path)
+    if "llama-3" in  model_name.lower():
+        args.conv_mode = "llava_llama_3"
+    elif 'phi-3' in  model_name.lower(): 
+        args.conv_mode = "llava_phi_3"
     tokenizer, model, image_processor, context_len = load_pretrained_model(model_path, args.model_base, model_name)
 
     questions = pd.read_table(os.path.expanduser(args.question_file))
@@ -67,7 +71,15 @@ def eval_model(args):
     if 'plain' in model_name and 'finetune' not in model_name.lower() and 'mmtag' not in args.conv_mode:
         args.conv_mode = args.conv_mode + '_mmtag'
         print(f'It seems that this is a plain model, but it is not using a mmtag prompt, auto switching to {args.conv_mode}.')
-
+    if "llama-3" in  model_name.lower():
+        terminators = [
+            tokenizer.eos_token_id,
+            tokenizer.convert_tokens_to_ids("<|eot_id|>")
+        ]
+    elif 'phi-3' in  model_name.lower(): 
+        terminators = [tokenizer.eos_token_id,  tokenizer.convert_tokens_to_ids("<|end|>")]
+    else:
+        terminators = [tokenizer.eos_token_id,]
     for index, row in tqdm(questions.iterrows(), total=len(questions)):
         options = get_options(row, all_options)
         cur_option_char = all_options[:len(options)]
@@ -120,13 +132,15 @@ def eval_model(args):
                     num_beams=args.num_beams,
                     # no_repeat_ngram_size=3,
                     max_new_tokens=1024,
+                    eos_token_id=terminators,
                     use_cache=True)
 
             input_token_len = input_ids.shape[1]
-            n_diff_input_output = (input_ids != output_ids[:, :input_token_len]).sum().item()
-            if n_diff_input_output > 0:
-                print(f'[Warning] {n_diff_input_output} output_ids are not the same as the input_ids')
-            outputs = tokenizer.batch_decode(output_ids[:, input_token_len:], skip_special_tokens=True)[0]
+            # n_diff_input_output = (input_ids != output_ids[:, :input_token_len]).sum().item()
+            # if n_diff_input_output > 0:
+            #     print(f'[Warning] {n_diff_input_output} output_ids are not the same as the input_ids')
+            # outputs = tokenizer.batch_decode(output_ids[:, input_token_len:], skip_special_tokens=True)[0]
+            outputs = tokenizer.batch_decode(output_ids, skip_special_tokens=True)[0]
             outputs = outputs.strip()
             if outputs.endswith(stop_str):
                 outputs = outputs[:-len(stop_str)]
