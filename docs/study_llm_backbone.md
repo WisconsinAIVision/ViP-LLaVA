@@ -79,7 +79,7 @@ The overall charts are here:
 
 
 <p align="center">
-Figure 2. Following the LLaVA-1.5 and ViP setting, we change the LLM backbone into Llama-3-8B, and Phi-3-mini-3.8B. Better language reasoning capability are observed while tasks that require core visual understanding capability are kept the same. 
+Figure 2. Following the LLaVA-1.5 and ViP-LLaVA settings, we change the LLM backbone into Llama-3-8B, and Phi-3-mini-3.8B. Better language reasoning capability are observed. Yet tasks that require core visual understanding capability own similar performance. 
 </p>
 
 
