@@ -16,6 +16,7 @@
 
 ## Release
 
+- [04/26] 🔥 LLaVA and ViP-LLaVA on recent Llama-3-8B and Phi-3-mini-3.8B is available [here](https://github.com/mu-cai/ViP-LLaVA/blob/main/docs/study_llm_backbone.md)! 
 - [02/26] 🔥 ViP-LLaVA is accepted to CVPR 2024!
 - [12/13] 🔥 Our works now appears on the official Huggingface [transformers doc](https://huggingface.co/docs/transformers/main/en/model_doc/vipllava)!
 - [12/03] 🔥 We released **ViP-LLaVA: Making Large Multimodal Models Understand Arbitrary Visual Prompts**. We propose to directly overlay the visual prompts upon the the original image during visual instruction tunning, so that large multimodal models could possibly understand arbitrary visual prompts in a user-friendly way.  Checkout the [paper](https://arxiv.org/abs/2312.00784) and [demo](https://pages.cs.wisc.edu/~mucai/vip-llava.html). We also built the first zero-shot region-level benchmark **ViP-Bench** for large multimodal models.
@@ -315,10 +316,10 @@ See [Evaluation.md](https://github.com/mu-cai/ViP-LLaVA/blob/main/docs/Evaluatio
 
 ## Citation
 
-If you find LLaVA useful for your research and applications, please cite using this BibTeX:
+If you find ViP-LLaVA useful for your research and applications, please cite using this BibTeX:
 ```bibtex
 
-@inproceedings{cai2023vipllava,
+@inproceedings{cai2024vipllava,
   author      = {Cai, Mu and Liu, Haotian and Mustikovela,  Siva Karthik and Meyer, Gregory P. and Chai, Yuning and Park, Dennis and Lee, Yong Jae},
   title       = {Making Large Multimodal Models Understand Arbitrary Visual Prompts},
   booktitle   = {IEEE Conference on Computer Vision and Pattern Recognition},
