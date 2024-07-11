@@ -197,7 +197,7 @@ python -m llava.serve.cli \
     --load-4bit
 ```
 
-Or use the bounding box as the 
+Or use the bounding box 
 
 ```Shell
 python -m llava.serve.cli_vip --model-path ./checkpoints/vip-llava-7b --image-file "https://pages.cs.wisc.edu/~mucai/example_styletransfer.png"  --bbox=100,200,200,300
@@ -247,7 +247,7 @@ Training script with DeepSpeed ZeRO-2: [`pretrain.sh`](https://github.com/mu-cai
 - `--vision_tower clip_4layers_336`: CLIP ViT-L/14 336px with multilayer feature fusion.
 
 <details>
-<summary>Pretrain takes around 20 hours for LLaVA-7B on 8x V100 (32G)</summary>
+<summary>Pretraining takes around 20 hours for LLaVA-7B on 8x V100 (32G)</summary>
 
  We provide training script with DeepSpeed [here](https://github.com/mu-cai/ViP-LLaVA/blob/main/scripts/pretrain_xformers.sh).
 Tips:
@@ -293,11 +293,11 @@ After downloading all of them, organize the data as follows in `./playground/dat
 
 You may download our pretrained projectors in [Model Zoo](https://github.com/mu-cai/ViP-LLaVA/blob/main/docs/MODEL_ZOO.md). It is not recommended to use legacy projectors, as they may be trained with a different version of the codebase, and if any option is off, the model will not function/train as we expected.
 
-Visual instruction tuning takes around 40 hours for LLaVA-v1.5-13B on 8x A100 (80G) It takes around 20 hours for LLaVA-v1.5-7B on 8x A100 (40G).
+Visual instruction tuning takes around 40 hours for LLaVA-v1.5-13B on 8x A100 (80G). It takes around 20 hours for LLaVA-v1.5-7B on 8x A100 (40G).
 
-Training script with DeepSpeed ZeRO-2: [`finetune_stage2.sh`](https://github.com/mu-cai/ViP-LLaVA/blob/main/scripts/finetune_stage2.sh). If you further want to use GPT-4V data to enhance the chatting capbility, see the training script for stage 3 with DeepSpeed ZeRO-2: [`finetune_stage3.sh`](https://github.com/mu-cai/ViP-LLaVA/blob/main/scripts/finetune_stage3.sh)
+Training script with DeepSpeed ZeRO-2: [`finetune_stage2.sh`](https://github.com/mu-cai/ViP-LLaVA/blob/main/scripts/finetune_stage2.sh). If you further want to use GPT-4V data to enhance the chatting capability, see the training script for stage 3 with DeepSpeed ZeRO-2: [`finetune_stage3.sh`](https://github.com/mu-cai/ViP-LLaVA/blob/main/scripts/finetune_stage3.sh)
 
-If you are do not have enough GPU memory:
+If you do not have enough GPU memory:
 
 - Use LoRA: [`finetune_lora.sh`](https://github.com/mu-cai/ViP-LLaVA/blob/main/scripts/finetune_lora.sh). We are able to fit 13B training in 8-A100-40G/8-A6000, and 7B training in 8-RTX3090. Make sure `per_device_train_batch_size*gradient_accumulation_steps` is the same as the provided script for best reproducibility.
 - Replace `zero3.json` with `zero3_offload.json` which offloads some parameters to CPU RAM. This slows down the training speed.
@@ -331,9 +331,9 @@ If you find ViP-LLaVA useful for your research and applications, please cite usi
 
 ## Acknowledgement
 
-- [Vicuna](https://github.com/lm-sys/FastChat): the langauge model we built upon, and our base model Vicuna-13B that has the amazing language capabilities!
+- [Vicuna](https://github.com/lm-sys/FastChat): the language model we built upon, and our base model Vicuna-13B that has the amazing language capabilities!
 
-- [LLaVa](https://llava-vl.github.io/): the codebase we built upon, which has amazing multimodal abalities! 
+- [LLaVa](https://llava-vl.github.io/): the codebase we built upon, which has amazing multimodal abilities! 
 
 
 
