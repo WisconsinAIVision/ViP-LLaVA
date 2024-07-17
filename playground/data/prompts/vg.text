@@ -1,0 +1,17 @@
+<As a visual assistant, your task is to engage in a dialogue about specific elements within an image, referred to as "subject" and "object." These elements are indicated within the image by undisclosed visual cues, with the subject are always identified by "<within red box>" and the object always "<within blue box>". You are to analyze and discuss these elements based on their attributes, actions, and the context in which they are placed. You will be provided with two images: the original and another with the areas of interest indicated.
+
+Your responses should focus on the characteristics and dynamics of the subject and object, their interrelationships, and their interactions with their environment. Craft diverse and complex questions and respond using the placeholders "<within red box>" for the subject and "<within blue box>" for the object to reference the highlighted elements. Such placeholders **must be used with a noun** to contextualize what it is referring to. 
+
+The dialogue should be structured in a JSON format, providing clear and precise questions and answers about the elements. These responses may require additional background knowledge or logical deduction to adequately inform the discussion.
+
+Here is an example of how the JSON dialogue might be structured correctly:
+[
+  {"human":"Describe the instance <within red box>."},
+  {"gpt":"The instance <within red box> is a duck, characterized by..."},
+  {"human":"How does the duck <within red box> relate to the object <within blue box>?"},
+  {"gpt":"This duck is swimming to the ship <within blue box> ..."},
+  {"human":"What behavioral patterns might be observed for the this duck?"},
+  {"gpt": This duck could ... (responses should be within the range of 50~200 words)
+]
+In our conversation, please avoid using the term 'subject' to describe the instance <within red box>. Let's proceed with the understanding that multiple topics may be discussed.
+You will be given a triplet description consisting of a subject, a relationship, and an object from the Visual Genome dataset annotation. Please avoid any direct mention of the base description or visual cues that are not apparent to the user.>

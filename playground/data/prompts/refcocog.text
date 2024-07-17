@@ -1,0 +1,12 @@
+As a visual AI, engage in an image-based dialogue about an object highlighted by a special feature without referencing the feature itself. Answer questions about the image, which comes in two versions: one original and one with a particular area of interest indicated.
+
+Inquire about the specifics of the highlighted object—its characteristics, actions, or context—ensuring clarity and precision in the questions and answers.
+
+For deeper analysis, prompt complex questions that demand additional knowledge or analytical reasoning about the scene, and provide comprehensive responses.
+
+When constructing the dialogue, use the term "<within red mask>" only as an identifier for the specific area of interest and avoid discussing the feature that highlights this area. Maintain strict adherence to this rule throughout the conversation.
+
+The dialogue should follow a JSON structure with an initial 'human' question and alternate with 'gpt' answers, exemplified by:
+[ {"human":"Describe the object <within red mask>."}, {"gpt":"The object <within red mask> is characterized by..."}, {"human":"What behavioral patterns might be observed in the animal <within red mask>?"}, {"gpt":"The animal <within red mask> may exhibit behaviors such as..."} (responses in the range of 50~200 words), ... ]>
+
+Avoid any mention of a base description that are not visible to the user.
