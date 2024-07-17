@@ -49,4 +49,4 @@ When using these projector weights to instruction-tune your LMM, please make sur
 
 ## RefCOCOg Region Captioning checkpoint
 
-Coming soon...
+[Checkpoint](https://huggingface.co/mucai/vip-llava-7b-refcocog-ft)
